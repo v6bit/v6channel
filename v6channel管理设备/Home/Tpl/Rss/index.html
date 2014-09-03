@@ -1,0 +1,59 @@
+<html>
+	<script>
+		function jump(){
+			window.location="__URL__/add";
+		}
+	</script>
+
+	
+	<a href="__APP__/Admin">返回管理页面</a>
+	<form action='__URL__/create' method='post' align='center'>
+
+		<p>
+			<label>RSS源:</label>
+			<input size="60" type="text" name="url" placeholder="输入RSS源" required="required" autofocus="autofocus">
+		</p>
+
+
+		<p>
+			<input type="submit" value="添加">
+		</p>
+
+	</form>
+	<table border='1' width='500' align='center'>
+		<tr>
+			<td>id</td>
+			<td>RSS源</td>
+			<td>操作</td>
+		</tr>
+                <volist name='data' id='vo'>
+			<tr>
+				<td><{$vo.id}></td>
+				<td><{$vo.url}></td>
+				<td><a href='__URL__/del/id/<{$vo.id}>'>delete</a>|<a href='__URL__/modify/id/<{$vo.id}>'>update</a></td>
+			</tr>
+                </volist>		
+	</table>
+<br />
+	<table border='1'  align='center'>
+		<tr>
+			<td>节目名字</td>
+			<td>播放地址</td>
+			<td>操作</td>
+		</tr>
+                <volist name='xml' id='vo'>
+			<tr>
+				<td><{$vo.source}></td>
+				<td><{$vo.url}></td>
+				<td><a href='__URL__/addrss/<{$vo.source}>/<{$vo.url}>'>订阅</a></td>
+			</tr>
+                </volist>		
+	</table>
+	
+</html>
+
+
+
+
+
+

@@ -1,0 +1,19 @@
+<html>
+        <script>
+		window.onload=function(){
+			if(<{$data.sex}>==0)
+			    document.getElementsByName('sex')[1].checked='checked';
+			else
+			   document.getElementsByName('sex')[0].checked='checked';
+		}
+	</script>
+	<form action='__URL__/update' method='post' align='center'>
+	    <input type='hidden' name='id' value='<{$data.id}>'>
+		<p>
+			<label>RSS源:</label>
+			<input size="60" type="text" name="url" placeholder="输入RSS源" required="required" autofocus="autofocus" value='<{$data.url}>'>
+		</p>
+
+		<input type='submit' value='submit'>
+	</form>
+</html>

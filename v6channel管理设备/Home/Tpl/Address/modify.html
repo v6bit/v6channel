@@ -1,0 +1,22 @@
+<html>
+        <script>
+		window.onload=function(){
+			if(<{$data.sex}>==0)
+			    document.getElementsByName('sex')[1].checked='checked';
+			else
+			   document.getElementsByName('sex')[0].checked='checked';
+		}
+	</script>
+	<form action='__URL__/update' method='post' align='center'>
+	    <input type='hidden' name='id' value='<{$data.id}>'>
+		<p>
+			<label>ip_address:</label>
+			<input type="text" name="ip" placeholder="输入分发设备IP地址" required="required" autofocus="autofocus" value='<{$data.ip}>'>
+		</p>
+		<p>
+			<label>description:</label>
+			<textarea name="description" placeholder="分发设备的描述" required="required" ><{$data.description}></textarea>
+		</p>
+		<input type='submit' value='submit'>
+	</form>
+</html>

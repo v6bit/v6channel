@@ -1,0 +1,16 @@
+<html>
+        <script>
+		window.onload=function(){
+			if(<{$data.sex}>==0)
+			    document.getElementsByName('sex')[1].checked='checked';
+			else
+			   document.getElementsByName('sex')[0].checked='checked';
+		}
+	</script>
+	<form action='/thinkphp/index.php/User/update' method='post'>
+	        <input type='hidden' name='id' value='<{$data.id}>'>
+		name:<input style='text' name='username' value='<{$data.username}>'></input><br>
+		sex:boy<input type='radio' name='sex' value="1" checked>gril<input type='radio' name='sex' value="0">
+		<input type='submit' value='submit'>
+	</form>
+</html>

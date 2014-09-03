@@ -1,0 +1,158 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>视频直播测试</title>
+<meta content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+
+
+<script>
+	function play(str){
+		//alert(str);
+		//window.location.href="v6player://test&ty=8&id=e095896275784751a291092b0fe25b99a800facd&url=10.3.200.4:7053";
+		window.location.href=str;
+	}
+	function showHint(str){
+	
+		if (window.XMLHttpRequest)
+		  {// code for IE7+, Firefox, Chrome, Opera, Safari
+		  xmlhttp=new XMLHttpRequest();
+		  }
+		else
+		  {// code for IE6, IE5
+		  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+		  }
+		xmlhttp.onreadystatechange=function()
+		  {
+		  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+			{
+				document.getElementById("txtHint").value=xmlhttp.responseText;
+
+				
+				//window.location.href=xmlhttp.responseText;
+				//window.location.href="v6player://test&ty=8&id=e095896275784751a291092b0fe25b99a800facd&url=10.3.200.4:7053";
+				play(document.getElementById("txtHint").value);
+
+			}
+		  }
+		xmlhttp.open("GET","__URL__/play/id/"+str,true);
+		xmlhttp.send();
+	}
+</script>
+
+	<link rel='stylesheet' type='text/css' href='__PUBLIC__/Css/basic.css' />
+	<script src='__PUBLIC__/Js/basic.js'></script>
+	
+	<!-- 新 Bootstrap 核心 CSS 文件 -->
+<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+<!-- 可选的Bootstrap主题文件（一般不用引入） -->
+<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+
+<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="http://cdn.bootcss.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+<input type='hidden' id="txtHint" />
+<!--	<table border='1' width='10' align='center' >
+		<tr>
+			<td>id</td>
+			<td>source_id</td>
+			<!--<td>播放</td>
+			<td>播放</td>
+		</tr>
+		<volist name='data' id='vo'>
+		<tr>
+			<td><{$vo.id}></td>
+			<td><{$vo.source_id}></td>
+			<!--<td><a href='v6player://test&ty=8&id=<{$vo.hash-i}>&url=<{$vo.ip-i}>:<{$vo.port-i}>'>播放</a></td>
+			<td><button onclick="showHint(<{$vo.id}>)">播放</button></td>
+		</tr>
+		</volist>		
+	</table>
+-->	
+    <div class="navbar navbar-default navbar-static-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">视频直播测试</a>
+        </div>
+        <!--<div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li class="dropdown-header">Nav header</li>
+                <li><a href="#">Separated link</a></li>
+                <li><a href="#">One more separated link</a></li>
+              </ul>
+            </li>
+          </ul>-->
+          <ul class="nav navbar-nav navbar-right">
+            <!--<li><a href="../navbar/">Default</a></li>-->
+            <li class="active"><a href="__URL__/rss" target="_blanck">RSS</a></li>
+            <!--<li><a href="../navbar-fixed-top/">Fixed top</a></li>-->
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+
+
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="container">
+      <div class="jumbotron">
+        <h1>测试说明</h1>
+        <p>  需要安装客户端软件v6Speed。下载地址：<a href="http://www.v6speed.org/v6Speed/">V6Speed。</a>
+ 
+		<br />
+		<p>1、首先运行下载得到的安装文件，安装v6speed软件客户端，该客户端自带了vlc播放器</p>
+		<p>2、点击下面的节目链接，客户端会自动调用自带的vlc播放器播放节目</p>
+ 
+        <p><a class="btn btn-primary btn-lg" role="button">Learn more &raquo;</a></p>
+      </div>
+    </div>
+
+    <div class="container">
+      <!-- Example row of columns -->
+      <div class="row">
+     
+		<volist name='data' id='vo'>
+		<div class="col-md-2">
+			<h2><{$vo.source_id}></h2>
+	
+			<!--<p><{$vo.id}></p>-->
+			<img src="__PUBLIC__/Images/<{$vo.iptv-image}>" class="img-rounded">
+			<!--<a href='v6player://test&ty=8&id=<{$vo.hash-i}>&url=<{$vo.ip-i}>:<{$vo.port-i}>'>播放</a>-->
+			<p><button onclick="showHint(<{$vo.id}>)">播放</button></p>
+		</div>
+		</volist>
+
+      </div>
+
+      <hr>
+
+      <footer>
+        <p>&copy; Company 2014</p>
+      </footer>
+    </div>
+	
+</body>
+</html>

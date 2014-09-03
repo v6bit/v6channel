@@ -1,0 +1,93 @@
+<html>
+	<script>
+		function jump(){
+			window.location="__URL__/add";
+		}
+	</script>
+	<a href="__APP__/" target="_blanck">首页</a>
+	<a href="__APP__/Address">分发设备管理</a>
+	
+	
+	<a href="__APP__/Rss" target="_blanck">RSS订阅管理</a>
+	
+	<form action='__URL__/create' method='post' align='center'>
+		<p>
+			<label>source_id:</label>
+			<input type="text" name="source_id" placeholder="输入节目名字" required="required" autofocus="autofocus" size="60">
+		</p>
+		<p>
+			<label>url-t:</label>
+			<input type="text" name="url-t" placeholder="输入源url" required="required" autofocus="autofocus" size="100">
+		</p>
+		<p>
+			<label>ip-i:</label>
+			<select  name="ip-i" required="required" autofocus="autofocus">
+				<volist name='ip' id='vo'>
+			
+					<option value ="<{$vo.ip}>"><{$vo.ip}></option>
+
+                </volist>
+			
+			</select>
+			<label>（选择分发ip）</label>
+		</p>
+		<p>
+			<label>port-i:</label>
+			<input type="text" name="port-i" placeholder="输入分发端口" required="required" autofocus="autofocus" size="60">
+		</p>		
+
+		<p>
+			<label>图片</label>
+			<input type="text" name="iptv-image" placeholder="输入图片名称" required="required" autofocus="autofocus" size="60">
+		</p>	
+
+		<p>
+			<input type="submit" value="添加">
+		</p>
+
+	</form>
+	<table border='1' width='10' align='center' >
+		<tr>
+			<td>id</td>
+			<td>source_id</td>
+			<td>url-t</td>
+			<td><font color='red'>pid-t</font></td>
+			<td>ip-i</td>
+			<td>port-i</td>
+			<td>hash-i</td>
+			<td><font color='red'>pid-i</font></td>
+			<td><font color='red'>state</font></td>
+			<td>iptv-image</td>
+			<td>节目操作</td>
+			<td>启动v6channel</td>
+			<td>playurl</td>
+			
+		</tr>
+                <volist name='data' id='vo'>
+			<tr>
+				<td><{$vo.id}></td>
+				<td><{$vo.source_id}></td>
+				<td><{$vo.url-t}></td>
+				<td><{$vo.pid-t}></td>
+				<td><{$vo.ip-i}></td>
+				<td><{$vo.port-i}></td>
+				<td><{$vo.hash-i}></td>
+				<td><{$vo.pid-i}></td>
+				<td><{$vo.state}></td>
+				<td><{$vo.iptv-image}></td>
+				<td><a href='__URL__/del/id/<{$vo.id}>'>delete</a>|<a href='__URL__/modify/id/<{$vo.id}>'>update</a></td>
+				<td><a href='__URL__/start/id/<{$vo.id}>'>启动</a>|<a href='__URL__/close/id/<{$vo.id}>'>关闭</a></td>
+				<td><a href='v6player://test&ty=8&id=<{$vo.hash-i}>&url=<{$vo.ip-i}>:<{$vo.port-i}>'>播放</a></td>
+			</tr>
+                </volist>		
+	</table>
+<{$Think.version}>
+
+	
+</html>
+
+
+
+
+
+

@@ -1,0 +1,39 @@
+<html>
+	<script>
+		function jump(){
+			window.location="/thinkphp/index.php/User/add";
+		}
+	</script>
+	<form align='center' action='__URL__/search' method='post'>
+		name:<input type='text' name='username'>
+		sex:boy<input type='radio' name='sex' value='1'>girl<input type='radio' name='sex' value='0'>
+		<input type='submit' value='submit'>
+	</form>
+	<table border='1' width='500' align='center'>
+		<tr>
+			<td>id</td>
+			<td>username</td>
+			<td>sex</td>
+			<td>control</td>
+		</tr>
+                <volist name='data' id='vo'>
+			<tr>
+				<td><{$vo.id}></td>
+				<td><{$vo.username}></td>
+				<td><{$vo.sex}></td>
+				<td><a href='/thinkphp/index.php/User/del/id/<{$vo.id}>'>delete</a>|<a href='/thinkphp/index.php/User/modify/id/<{$vo.id}>'>update</a></td>
+			</tr>
+                </volist>		
+	</table>
+
+	<center>
+		<button onclick='jump()'>add</button>
+	</center>
+	
+</html>
+
+
+
+
+
+
